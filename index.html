@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+
+    <title>AsyncAPI Viewer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+
+      .title-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .title-container img {
+        width: 100px;
+      }
+
+      .info,
+      .channels {
+        margin-bottom: 20px;
+      }
+
+      #json-editor {
+        height: 500px;
+        width: 100%;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title-container">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/2/2d/2023_Ita%C3%BA_Unibanco_Logo.png"
+        alt=""
+      />
+      <h1>Informações da API</h1>
+    </div>
+    <div class="info">
+      <p>
+        <strong>Título: ${ template.info.title }</strong>
+        <span id="title"></span>
+      </p>
+      <p>
+        <strong>Versão: ${ template.info.version }</strong>
+        <span id="version"></span>
+      </p>
+      <p>
+        <strong>Descrição: ${ template.info.description }</strong>
+        <span id="description"></span>
+      </p>
+    </div>
+
+    <h2>Canais</h2>
+    <div class="channels" id="channels"></div>
+
+    <textarea id="json-editor"></textarea>
+
+    <script>
+      const editor = CodeMirror.fromTextArea(
+        document.getElementById("json-editor"),
+        {
+          mode: "application/json",
+          theme: "default",
+          lineNumbers: true,
+          readOnly: true,
+        }
+      );
+
+      const jsonParsed = {
+        name: "AppointmentScheduledMessage",
+        title: "Appointment Scheduled Message",
+        summary: "Notificação que um novo agendamento foi feito!",
+        contentType: "application/json",
+        payload: {
+          type: "object",
+          properties: {
+            appointmentId: { type: "string" },
+            petName: { type: "string" },
+            serviceType: { type: "string" },
+            scheduledTime: { type: "string", format: "date-time" },
+            ownerContact: { type: "string" },
+          },
+        },
+      };
+
+      // JSON exemplo
+      const jsonExample = JSON.stringify(jsonParsed, null, 2); // Formatação do JSON
+
+      editor.setValue(jsonExample);
+    </script>
+  </body>
+</html>
