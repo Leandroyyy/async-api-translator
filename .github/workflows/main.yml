@@ -20,3 +20,10 @@ jobs:
       uses: asyncapi/github-action-for-cli@v3.1.1 # You can use any version you want
       with:
           filepath: 'asyncapi.yaml'
+          output: './docs'
+          
+    - name: Upload AsyncAPI Docs
+      uses: actions/upload-artifact@v3
+      with:
+        name: asyncapi-docs
+        path: './docs'
