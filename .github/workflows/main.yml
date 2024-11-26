@@ -23,7 +23,7 @@ jobs:
           template: "@asyncapi/html-template@3.0.0"
           filepath: 'asyncapi_3.yaml'
           output: './docs'
-          parameters: '--use-new-generator'
+          # parameters: '--use-new-generator'
           
     - name: Upload AsyncAPI Docs
       uses: actions/upload-artifact@v3
