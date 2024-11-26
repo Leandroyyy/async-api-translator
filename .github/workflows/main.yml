@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generatePage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generator, Validator, Converter and others - all in one for your AsyncAPI docs
+        uses: asyncapi/github-action-for-cli@v3.0.0
+          
