@@ -11,6 +11,9 @@ jobs:
     #"standard step" where repo needs to be checked-out first
     - name: Checkout repo
       uses: actions/checkout@v3
+
+    - name: Debug workspace
+      run: ls -R
       
     #In case you do not want to use defaults, you for example want to use different template
     - name: Generating HTML from my AsyncAPI document
