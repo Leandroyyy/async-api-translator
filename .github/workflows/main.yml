@@ -19,6 +19,4 @@ jobs:
     - name: Generating HTML from my AsyncAPI document
       uses: asyncapi/github-action-for-cli@v3.1.1 # You can use any version you want
       with:
-          generator: html
-          file: './asyncapi.yaml'
-          output: './docs'
+          filepath: '/github/workspace/asyncapi.yaml'
