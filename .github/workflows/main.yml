@@ -9,5 +9,8 @@ jobs:
   generatePage:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      
       - name: Generator, Validator, Converter and others - all in one for your AsyncAPI docs
         uses: asyncapi/github-action-for-cli@v3.1.1
