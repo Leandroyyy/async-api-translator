@@ -13,5 +13,5 @@ jobs:
         uses: asyncapi/github-action-for-cli@v3.0.0
         with:
           command: generate
-          filepath: asynapi.yaml
+          filepath: asyncapi.yaml
 
