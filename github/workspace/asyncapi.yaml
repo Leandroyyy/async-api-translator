@@ -1,0 +1,70 @@
+asyncapi: "3.0.0"
+info:
+  title: Agenda de Petshop
+  version: 1.0.0
+  description: |-
+    Essa agenda de petshop permite você capturar os eventos de novos agendamentos
+    ### Verifique algumas das ações:
+
+    * Veja quando foi agendado uma consulta
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+defaultContentType: application/json
+
+servers:
+  Prod:
+    host: arn:aws:sns:us-east-1:123456789012:pet-shop-example
+    protocol: sns
+    description: Tópico para agenda de pet-shop
+  Hom:
+    host: arn:aws:sns:us-east-1:123456789012:pet-shop-example
+    protocol: sns
+    description: Tópico para agenda de pet-shop
+  Dev:
+    host: arn:aws:sns:us-east-1:123456789012:pet-shop-example
+    protocol: sns
+    description: Tópico para agenda de pet-shop
+
+channels:
+  appointment-scheduled:
+    description: Tópico para ouvir mensagens de agendamentos
+    messages:
+      agendado:
+        $ref: "#/components/messages/AppointmentScheduledMessage"
+
+operations:
+  AppointmentScheduledMessage:
+    title: Agendamento realizado
+    summary: Evento de agendamento de um pet
+    description: A longer description
+    channel:
+      $ref: "#/channels/appointment-scheduled"
+    action: receive
+
+components:
+  messages:
+    AppointmentScheduledMessage:
+      name: "AppointmentScheduledMessage"
+      title: Appointment Scheduled Message
+      summary: Notificação que um novo agendamento foi feito!
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/AppointmentScheduledMessagePayload"
+
+  schemas:
+    AppointmentScheduledMessagePayload:
+      type: object
+      properties:
+        appointmentId:
+          type: string
+        petName:
+          type: boolean
+        serviceType:
+          type: string
+        scheduledTime:
+          type: string
+          format: date-time
+        ownerContact:
+          type: string
