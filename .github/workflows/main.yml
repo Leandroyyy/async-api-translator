@@ -23,7 +23,7 @@ jobs:
           template: "@asyncapi/html-template@0.9.0"
           filepath: 'asyncapi.yaml'
           output: './docs'
-          parameters: '-p singleFile=true'
+          parameters: '--param singleFile=true'
           
     - name: Upload AsyncAPI Docs
       uses: actions/upload-artifact@v3
