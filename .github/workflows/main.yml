@@ -20,10 +20,10 @@ jobs:
       uses: asyncapi/github-action-for-cli@v3.1.1 # You can use any version you want
       with:
           command: generate
-          template: "@asyncapi/html-template@3.0.0"
-          filepath: 'asyncapi_3.yaml'
+          template: "@asyncapi/html-template"
+          filepath: 'asyncapi.yaml'
           output: './docs'
-          # parameters: '--use-new-generator'
+          parameters: '-p singleFile=true'
           
     - name: Upload AsyncAPI Docs
       uses: actions/upload-artifact@v3
