@@ -20,8 +20,8 @@ jobs:
       uses: asyncapi/github-action-for-cli@v3.1.2 # You can use any version you want
       with:
           command: generate
-          template: "@asyncapi/nodejs-template"
-          filepath: 'asyncapi_3.yaml'
+          template: "@asyncapi/html-template"
+          filepath: 'asyncapi.yaml'
           output: './docs'
           #parameters: '-p singleFile=true'
           
